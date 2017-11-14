@@ -14,7 +14,7 @@ src_tauril_bson_parser_SOURCES =
 	src/ast/fwd.hh
 	src/ast/binary.hh src/ast/binary.cc src/ast/binary.hxx
 	src/ast/binary-data.hh src/ast/binary-data.cc src/ast/binary-data.hxx
-	src/ast/document.hh
+	src/ast/document.hh src/ast/document.cc src/ast/document.hxx
 	src/ast/element.hh
 	src/ast/e-list.hh
 	src/ast/e-name.hh

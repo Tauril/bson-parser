@@ -6,7 +6,8 @@ namespace Parser
   BsonParser::BsonParser(const std::vector<char>& buffer, node_t doc)
     : buffer_(buffer)
   {
-    doc = read_elist();
+    while (!buffer_.empty())
+      doc.add(read_elist());
   }
 
   node_t
