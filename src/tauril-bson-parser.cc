@@ -29,6 +29,8 @@ int main(int argc, char** argv)
     while (file.good())
       buffer.push_back(file.get());
 
+    file.close();
+
     // Init the parser.
     Ast::node_t doc;
     Parser::BsonParser parser(buffer, doc);
