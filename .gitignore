@@ -1,4 +1,36 @@
+# Global.
+*~
+*.la
+*.lo
+*.log
 *.o
-.*.swp
+*.swp
+*.trs
+.deps
+.dirstamp
+.libs
 
-tauril-bson-parser
+# Local
+/*aclocal.m4
+/autom4te.cache*
+/config
+/config.cache*
+/config.h
+/config.h?in*
+/config.log*
+/config.status*
+/configure
+/stamp-h1
+
+# Inside
+Makefile
+Makefile.in
+build-aux/ar-lib
+build-aux/compile
+build-aux/config.guess
+build-aux/config.sub
+build-aux/depcomp
+build-aux/install-sh
+build-aux/missing
+build-aux/test-driver
+/src/tauril-bson-parser
