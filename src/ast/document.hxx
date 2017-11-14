@@ -1,10 +1,13 @@
 #pragma once
 
+#include "ast/document.hh"
+
 namespace Ast
 {
 
+  template <typename T>
   inline void
-  Document::add(Node<Element> element)
+  Document::add(Node<Element<T>> element)
   {
     e_list_.emplace_back(element);
   }
@@ -21,7 +24,7 @@ namespace Ast
     return size_;
   }
 
-  inline EList
+  inline const EList&
   Document::e_list_get() const
   {
     return e_list_;
