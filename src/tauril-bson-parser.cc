@@ -1,5 +1,6 @@
 #include <fstream>
 #include <iostream>
+#include <stdexcept>
 #include <vector>
 
 #include "parser/bson-parser.hh"
@@ -22,7 +23,7 @@ int main(int argc, char** argv)
     // Load file and store content inside the buffer.
     std::ifstream file(argv[1]);
     if (!file.is_open())
-      throw std::invalid_argument;
+      throw std::invalid_argument("Invalid input file");
 
     std::vector<char> buffer;
 
@@ -32,10 +33,10 @@ int main(int argc, char** argv)
     file.close();
 
     // Init the parser.
-    Ast::node_t doc;
+    Ast::Node<Ast::Document> doc;
     Parser::BsonParser parser(buffer, doc);
 
-    doc.Dump();
+    doc->Dump();
   } catch (const std::exception& e)
   {
     std::cerr << e.what() << '\n';
