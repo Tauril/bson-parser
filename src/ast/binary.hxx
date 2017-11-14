@@ -6,19 +6,19 @@ namespace Ast
 {
 
   inline Int32
-  size_get() const
+  Binary::size_get() const
   {
     return size_;
   }
 
   inline Binary::Subtype
-  subtype_get() const
+  Binary::subtype_get() const
   {
     return subtype_;
   }
 
   inline const Bytes&
-  bytes_get() const
+  Binary::bytes_get() const
   {
     return bytes_;
   }

@@ -7,6 +7,6 @@ namespace Ast
     : size_(size)
     , subtype_(subtype)
     , bytes_(bytes)
-  {};
+  {}
 
 } // namespace Ast

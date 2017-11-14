@@ -33,6 +33,6 @@ namespace Ast
     Bytes bytes_;
   };
 
-};
+} // namespace Ast
 
 #include "ast/binary.hxx"
