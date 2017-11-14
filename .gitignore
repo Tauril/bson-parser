@@ -1,0 +1,4 @@
+*.o
+.*.swp
+
+tauril-bson-parser
