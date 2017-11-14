@@ -2,7 +2,7 @@
 #include <iostream>
 #include <vector>
 
-#include "bson-parser.hh"
+#include "parser/bson-parser.hh"
 
 static void help()
 {
@@ -30,8 +30,8 @@ int main(int argc, char** argv)
       buffer.push_back(file.get());
 
     // Init the parser.
-    Document doc;
-    Bson::BsonParser parser(buffer, doc);
+    Ast::node_t doc;
+    Parser::BsonParser parser(buffer, doc);
 
     doc.Dump();
   } catch (const std::exception& e)
