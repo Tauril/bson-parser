@@ -8,16 +8,6 @@ test -z "$srcdir" && srcdir=.
 ORIGDIR=`pwd`
 cd "$srcdir"
 
-libtoolize=libtoolize
-for l in "$LIBTOOLIZE" glibtoolize libtoolize;
-do
-  if ($l --version) >/dev/null 2>&1; then
-    libtoolize=$l
-    break
-  fi
-done
-export LIBTOOLIZE=$libtoolize
-
 set -x
 
 autoreconf --force --verbose --install

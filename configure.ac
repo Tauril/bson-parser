@@ -5,9 +5,10 @@ AC_INIT([bson-parser], [1.0], [], [bson-parser])
 
 # Auxiliary files.
 AC_CONFIG_AUX_DIR([build-aux])
+AC_CONFIG_MACRO_DIR([build-aux/m4])
 
 # Automake.
-AM_INIT_AUTOMAKE([foreign -Wall silent-rules])
+AM_INIT_AUTOMAKE([foreign -Wall -Werror silent-rules])
 
 AM_SILENT_RULES([yes])
 
@@ -23,13 +24,12 @@ AC_PROG_CXX
 # Enable C++ 2014 support.
 AC_CANONICAL_HOST
 
-## -------------------- ##
-## Auxiliary programs.  ##
-## -------------------- ##
+## ----------- ##
+## Libraries.  ##
+## ----------- ##
 
-# We don't need shared libraries, speed the compilation up.
-LT_INIT([disable-shared])
-
+BOOST_REQUIRE([1.61])
+BOOST_VARIANT
 
 ## --------------- ##
 ## Configuration.  ##
