@@ -3,50 +3,49 @@
 namespace Parser
 {
 
-  BsonParser::BsonParser(const std::string& in, node_t& doc)
+  BsonParser::BsonParser(const std::vector<char>& buffer, node_t doc)
+    : buffer_(buffer)
   {
-    doc = read_EList(in);
-
-    in.close();
+    doc = read_elist();
   }
 
   node_t
-  BsonParser::read_elist(const std::ifstream& in)
-  {
-  }
-
-  node_t
-  BsonParser::read_element(const std::ifstream& in)
+  BsonParser::read_elist()
   {
   }
 
   node_t
-  BsonParser::read_ename(const std::ifstream& in)
+  BsonParser::read_element()
   {
   }
 
   node_t
-  BsonParser::read_string(const std::ifstream& in)
+  BsonParser::read_ename()
   {
   }
 
   node_t
-  BsonParser::read_cstring(const std::ifstream& in)
+  BsonParser::read_string()
   {
   }
 
   node_t
-  BsonParser::read_binary(const std::ifstream& in)
+  BsonParser::read_cstring()
   {
   }
 
   node_t
-  BsonParser::read_subtype(const std::ifstream& in)
+  BsonParser::read_binary()
   {
   }
 
   node_t
-  BsonParser::read_codews(const std::ifstream& in)
+  BsonParser::read_subtype()
+  {
+  }
+
+  node_t
+  BsonParser::read_codews()
   {
   }
 
