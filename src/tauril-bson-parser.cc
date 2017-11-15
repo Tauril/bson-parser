@@ -5,9 +5,14 @@
 
 #include "parser/bson-parser.hh"
 
-static void help()
+namespace
 {
-  std::cout << "Usage: ./src/tauril-bson-parser file.bson\n";
+
+  void help()
+  {
+    std::cout << "Usage: ./src/tauril-bson-parser file.bson\n";
+  }
+
 }
 
 int main(int argc, char** argv)
