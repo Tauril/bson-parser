@@ -38,13 +38,13 @@ namespace Ast
 
   using ElementVariant =
     boost::variant<
-      //nullptr, // undefined, null, min_key, max_key
+      std::nullptr_t, // undefined, null, min_key, max_key
       Node<Element<Double>>,
-      Node<Element<String>>,
       Node<Element<Int32>>,
       Node<Element<Int64>>,
       Node<Element<Uint64>>,
       Node<Element<Decimal128>>,
+      Node<Element<Node<String>>>,
       Node<Element<Node<Document>>>,
       Node<Element<Node<Binary>>>,
       Node<Element<Node<ObjectId>>>,
