@@ -11,16 +11,16 @@ namespace Ast
     return size_;
   }
 
-  inline const String&
+  inline const String*
   CodeWS::str_get() const
   {
-    return str_;
+    return str_.get();
   }
 
-  inline const Document&
+  inline const Document*
   CodeWS::doc_get() const
   {
-    return doc_;
+    return doc_.get();
   }
 
 } // namespace Ast

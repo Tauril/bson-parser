@@ -3,7 +3,7 @@
 namespace Ast
 {
 
-  CodeWS::CodeWS(Int32 size, const String& str, const Document& doc)
+  CodeWS::CodeWS(Int32 size, Node<String> str, Node<Document> doc)
     : size_(size)
     , str_(str)
     , doc_(doc)
