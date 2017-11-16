@@ -37,9 +37,9 @@ int main(int argc, char** argv)
 
     file.close();
 
-    // Init the parser.
-    Ast::Node<Ast::Document> doc;
-    Parser::BsonParser parser(buffer, doc);
+    // Init the parser and get the document.
+    Parser::BsonParser parser(buffer);
+    auto doc = parser.read_document();
 
     doc->Dump();
   } catch (const std::exception& e)

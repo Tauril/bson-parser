@@ -1,32 +1,50 @@
 #pragma once
 
-#include <memory>
 #include <vector>
 
+#include "ast/binary.hh"
+#include "ast/code-ws.hh"
 #include "ast/document.hh"
+#include "ast/string.hh"
+#include "ast/fwd.hh"
 
 namespace Parser
 {
 
+  template <typename T>
+  using Node = Ast::Node<T>;
+
   class BsonParser
   {
   public:
-    using node_t = Ast::node_t;
 
     // Parse buffer and store the result inside doc.
-    BsonParser(const std::vector<char>& buffer, node_t doc);
+    BsonParser(const std::vector<char>& buffer);
 
+    // Main parsing routines.
+    Node<Ast::Document> read_document(); // document
   private:
-    node_t read_elist(); // e_list
-    node_t read_element(); // element
-    node_t read_ename(); // e_name
-    node_t read_string(); // string
-    node_t read_cstring(); // cstring
-    node_t read_binary(); // binary
-    node_t read_subtype(); // subtype
-    node_t read_codews(); // code_w_s
+    Ast::EList read_elist(); // e_list
 
-    std::vector<char> buffer_;
+    template <typename T>
+    Node<Ast::Element<T>> read_element(); // element
+
+    // Attribute types for Element.
+    Ast::EName read_ename(); // e_name
+    Node<Ast::String> read_string(); // string
+    Ast::CString read_cstring(); // cstring
+    Node<Ast::Binary> read_binary(); // binary
+    Node<Ast::CodeWS> read_codews(); // code_w_s
+
+    // Helper parsing routines.
+    Ast::Int32 read_size();
+    Ast::Bytes read_sized_bytes(Ast::Int32 size);
+
+    std::vector<char> buffer_; // Content of the input file.
+
+    // ith char in the buffer.
+    // Manipulated through each read_* method.
+    size_t i_;
   };
 
 } // namespace Parser
