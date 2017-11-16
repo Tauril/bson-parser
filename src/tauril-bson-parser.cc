@@ -28,7 +28,7 @@ int main(int argc, char** argv)
     // Load file and store content inside the buffer.
     std::ifstream file(argv[1]);
     if (!file.is_open())
-      throw std::invalid_argument("Invalid input file");
+      throw std::invalid_argument("Could not open input file.");
 
     std::vector<char> buffer;
 
