@@ -5,10 +5,10 @@
 namespace Ast
 {
 
-  inline const String&
+  inline const String*
   DBPointer::str_get() const
   {
-    return str_;
+    return str_.get();
   }
 
   inline const std::array<Byte, 12>&

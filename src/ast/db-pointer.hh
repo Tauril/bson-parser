@@ -12,14 +12,14 @@ namespace Ast
   {
   public:
     // Construction of a DBPointer node.
-    DBPointer(const String& str, const std::array<Byte, 12>& bytes);
+    DBPointer(Node<String> str, const std::array<Byte, 12>& bytes);
 
     // Public accessors.
-    const String& str_get() const;
+    const String* str_get() const;
     const std::array<Byte, 12>& bytes_get() const;
 
   private:
-    String str_;
+    Node<String> str_;
     std::array<Byte, 12> bytes_;
   };
 

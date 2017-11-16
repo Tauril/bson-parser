@@ -3,7 +3,7 @@
 namespace Ast
 {
 
-  DBPointer::DBPointer(const String& str, const std::array<Byte, 12>& bytes)
+  DBPointer::DBPointer(Node<String> str, const std::array<Byte, 12>& bytes)
     : str_(str)
     , bytes_(bytes)
   {}
