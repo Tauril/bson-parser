@@ -9,18 +9,10 @@ namespace Ast
   class Document
   {
   public:
-    Document() = default;
-    Document(Int32 size);
+    Document(Int32 size, const EList& e_list);
 
     // Print the content of the document in a human readble form.
     void Dump() const;
-
-    // Add new element to the document.
-    template <typename T>
-    void add(Node<Element<T>> element);
-
-    // Notably useful for the first Document.
-    void size_set(Int32 size);
 
     Int32 size_get() const;
     // Accessor to all the elements inside the document.
