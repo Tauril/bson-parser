@@ -23,7 +23,8 @@ src_tauril_bson_parser_SOURCES = \
 	src/ast/regex.hh src/ast/regex.cc src/ast/regex.hxx \
 	src/ast/string.hh src/ast/string.cc src/ast/string.hxx \
 	src/ast/element.hh src/ast/element.hxx \
-	src/ast/document.hh src/ast/document.cc src/ast/document.hxx
+	src/ast/document.hh src/ast/document.cc src/ast/document.hxx \
+	src/ast/binder.hh src/ast/binder.cc src/ast/binder.hxx
 
 # parser
 src_tauril_bson_parser_SOURCES += \

@@ -3,6 +3,7 @@
 #include <vector>
 
 #include "ast/binary.hh"
+#include "ast/binder.hh"
 #include "ast/boolean.hh"
 #include "ast/code-ws.hh"
 #include "ast/db-pointer.hh"
@@ -28,7 +29,7 @@ namespace Parser
     BsonParser(const std::vector<Ast::Byte>& buffer);
 
     // Main parsing routine.
-    Node<Ast::Document> read();
+    Node<Ast::Binder> read();
   private:
     Node<Ast::Document> read_document(); // document
     Ast::EList read_elist(); // e_list (and element)

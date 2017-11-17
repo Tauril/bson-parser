@@ -11,16 +11,19 @@ namespace Parser
     , i_(0)
   {}
 
-  Node<Ast::Document>
+  Node<Ast::Binder>
   BsonParser::read()
   {
-    auto doc = read_document();
+    Ast::Binder binder;
+
+    while (i_ != buffer_.size() - 1)
+      binder.add(read_document());
 
     // buffer_[buffer_.size() - 1] holds EOF.
-    if (i_ + 1 != buffer_.size())
+    if (i_ != buffer_.size() - 1)
       throw std::runtime_error("read: Invalid file format.");
 
-    return doc;
+    return std::make_shared<Ast::Binder>(binder);
   }
 
   Node<Ast::Document>

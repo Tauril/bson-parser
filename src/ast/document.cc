@@ -8,9 +8,4 @@ namespace Ast
     , e_list_(e_list)
   {}
 
-  void
-  Document::Dump() const
-  {
-  }
-
 } // namespace Ast

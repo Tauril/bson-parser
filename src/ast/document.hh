@@ -11,9 +11,6 @@ namespace Ast
   public:
     Document(Int32 size, const EList& e_list);
 
-    // Print the content of the document in a human readble form.
-    void Dump() const;
-
     Int32 size_get() const;
     // Accessor to all the elements inside the document.
     const EList& e_list_get() const;
