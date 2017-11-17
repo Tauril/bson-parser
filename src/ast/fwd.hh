@@ -38,7 +38,7 @@ namespace Ast
 
   using ElementVariant =
     boost::variant<
-      std::nullptr_t, // undefined, null, min_key, max_key
+      Node<Element<std::nullptr_t>>, // undefined, null, min_key, max_key
       Node<Element<Double>>,
       Node<Element<Int32>>,
       Node<Element<Int64>>,
