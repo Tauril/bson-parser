@@ -11,7 +11,7 @@ namespace Ast
     return str_.get();
   }
 
-  inline const std::array<Byte, 12>&
+  inline const Bytes&
   DBPointer::bytes_get() const
   {
     return bytes_;

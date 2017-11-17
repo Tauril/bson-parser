@@ -3,6 +3,7 @@
 #include <array>
 #include <iostream>
 #include <memory>
+#include <string>
 #include <vector>
 
 #include <boost/variant.hpp>
@@ -32,7 +33,7 @@ namespace Ast
   using Double = double; // (for completness) 8 bytes floating point
   using Decimal128 = long double; // 16 bytes floating point
 
-  using Bytes = std::vector<Byte>;
+  using Bytes = std::string;
   using CString = Bytes; // For convenience with the grammar
   using EName = CString; // For convenience with the grammar
 
