@@ -7,4 +7,13 @@ namespace Ast
     : status_(status)
   {}
 
+  std::string
+  Boolean::bool_str() const
+  {
+    if (status_)
+      return "true";
+
+    return "false";
+  }
+
 } // namespace Ast

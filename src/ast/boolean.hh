@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string>
+
 #include "ast/fwd.hh"
 
 namespace Ast
@@ -13,6 +15,8 @@ namespace Ast
 
     // Public accessors.
     bool status_get() const;
+
+    std::string bool_str() const;
 
   private:
     bool status_;
