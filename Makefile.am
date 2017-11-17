@@ -22,7 +22,7 @@ src_tauril_bson_parser_SOURCES = \
 	src/ast/object-id.hh src/ast/object-id.cc src/ast/object-id.hxx \
 	src/ast/regex.hh src/ast/regex.cc src/ast/regex.hxx \
 	src/ast/string.hh src/ast/string.cc src/ast/string.hxx \
-	src/ast/element.hh src/ast/element.cc src/ast/element.hxx \
+	src/ast/element.hh src/ast/element.hxx \
 	src/ast/document.hh src/ast/document.cc src/ast/document.hxx
 
 # parser
