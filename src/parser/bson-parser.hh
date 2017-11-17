@@ -21,7 +21,7 @@ namespace Parser
   public:
 
     // Parse buffer and store the result inside doc.
-    BsonParser(const std::vector<char>& buffer);
+    BsonParser(const std::vector<Ast::Byte>& buffer);
 
     // Main parsing routines.
     Node<Ast::Document> read_document(); // document
@@ -40,7 +40,7 @@ namespace Parser
     Int read_size();
     Ast::Bytes read_sized_bytes(Ast::Int32 size);
 
-    std::vector<char> buffer_; // Content of the input file.
+    std::vector<Ast::Byte> buffer_; // Content of the input file.
 
     // ith char in the buffer.
     // Manipulated through each read_* method.

@@ -30,7 +30,7 @@ int main(int argc, char** argv)
     if (!file.is_open())
       throw std::invalid_argument("Could not open input file.");
 
-    std::vector<char> buffer;
+    std::vector<Ast::Byte> buffer;
 
     while (file.good())
       buffer.push_back(file.get());
