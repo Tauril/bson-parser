@@ -39,7 +39,7 @@ int main(int argc, char** argv)
 
     // Init the parser and get the document.
     Parser::BsonParser parser(buffer);
-    auto doc = parser.read_document();
+    auto doc = parser.read();
 
     doc->Dump();
   } catch (const std::exception& e)
