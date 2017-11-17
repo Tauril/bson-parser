@@ -14,6 +14,7 @@ bin_PROGRAMS = src/tauril-bson-parser
 # ast
 src_tauril_bson_parser_SOURCES = \
 	src/ast/fwd.hh \
+	src/ast/types.hh \
 	src/ast/binary.hh src/ast/binary.cc src/ast/binary.hxx \
 	src/ast/boolean.hh src/ast/boolean.cc src/ast/boolean.hxx \
 	src/ast/code-ws.hh src/ast/code-ws.cc src/ast/code-ws.hxx \

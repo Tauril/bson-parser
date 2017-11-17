@@ -6,7 +6,7 @@ namespace Ast
 {
 
   template <typename T>
-  inline typename Element<T>::Type
+  inline ElementAttribute::Type
   Element<T>::type_get() const
   {
     return type_;

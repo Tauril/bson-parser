@@ -5,8 +5,10 @@
 #include "ast/binary.hh"
 #include "ast/code-ws.hh"
 #include "ast/document.hh"
+#include "ast/element.hh"
 #include "ast/string.hh"
 #include "ast/fwd.hh"
+#include "ast/types.hh"
 
 namespace Parser
 {
@@ -24,10 +26,7 @@ namespace Parser
     // Main parsing routines.
     Node<Ast::Document> read_document(); // document
   private:
-    Ast::EList read_elist(); // e_list
-
-    template <typename T>
-    Node<Ast::Element<T>> read_element(); // element
+    Ast::EList read_elist(); // e_list (and element)
 
     // Attribute types for Element.
     Ast::EName read_ename(); // e_name
@@ -37,7 +36,8 @@ namespace Parser
     Node<Ast::CodeWS> read_codews(); // code_w_s
 
     // Helper parsing routines.
-    Ast::Int32 read_size();
+    template <typename Int>
+    Int read_size();
     Ast::Bytes read_sized_bytes(Ast::Int32 size);
 
     std::vector<char> buffer_; // Content of the input file.
