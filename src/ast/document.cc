@@ -3,9 +3,9 @@
 namespace Ast
 {
 
-  Document::Document(Int32 size, const EList& e_list)
+  Document::Document(Int32 size, const EList& elist)
     : size_(size)
-    , e_list_(e_list)
+    , elist_(elist)
   {}
 
 } // namespace Ast

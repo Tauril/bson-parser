@@ -12,9 +12,9 @@ namespace Ast
   }
 
   inline const EList&
-  Document::e_list_get() const
+  Document::elist_get() const
   {
-    return e_list_;
+    return elist_;
   }
 
 } // namespace Ast

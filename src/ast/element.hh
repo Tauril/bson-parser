@@ -99,7 +99,6 @@ namespace Ast
 
     ElementAttribute::Type type_get() const;
     EName name_get() const;
-    // TODO: SFINAE getter for smart pointer and for literal types
     T attr_get() const;
   private:
     // Type of element
