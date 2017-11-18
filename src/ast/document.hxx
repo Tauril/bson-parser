@@ -17,4 +17,16 @@ namespace Ast
     return elist_;
   }
 
+  inline bool
+  Document::is_array_get() const
+  {
+    return is_array_;
+  }
+
+  inline void
+  Document::is_array_set(bool is_array)
+  {
+    is_array_ = is_array;
+  }
+
 } // namespace Ast

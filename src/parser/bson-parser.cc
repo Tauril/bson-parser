@@ -60,7 +60,8 @@ namespace Parser
         case 0:
           {
             using attr_type = Ast::Element<Ast::Types<0>::type>;
-            elist.emplace_back(std::make_shared<attr_type>(type, ename, nullptr));
+            elist.emplace_back(std::make_shared<attr_type>(type, ename,
+                                                           nullptr));
             break;
           }
         case 1:
@@ -109,6 +110,8 @@ namespace Parser
           {
             using attr_type = Ast::Element<Ast::Types<7>::type>;
             auto attr = read_document();
+            if (type == Ast::ElementAttribute::Type::_array)
+              attr->is_array_set(true);
             elist.emplace_back(std::make_shared<attr_type>(type, ename, attr));
             break;
           }
@@ -277,7 +280,7 @@ namespace Parser
     if (i_ >= buffer_.size() || (status != '\x00' && status != '\x01'))
       throw std::runtime_error("boolean: Invalid file format.");
 
-    // Conversion from char to boolean.
+    // Implicit conversion from char to boolean.
     return std::make_shared<Ast::Boolean>(status);
   }
 
@@ -326,6 +329,7 @@ namespace Parser
     return size;
   }
 
+  // TODO: Fix that shit. Doesn't work. Dunno why.
   Ast::Double
   BsonParser::read_size()
   {

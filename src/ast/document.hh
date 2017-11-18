@@ -14,10 +14,13 @@ namespace Ast
     Int32 size_get() const;
     // Accessor to all the elements inside the document.
     const EList& elist_get() const;
+    bool is_array_get() const;
+    void is_array_set(bool is_array);
   private:
     // PArsed values.
     Int32 size_;
     EList elist_;
+    bool is_array_;
   };
 
 } // namespace Ast
