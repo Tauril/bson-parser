@@ -76,7 +76,19 @@ namespace Ast
   // not worth it?
   std::ostream& operator<<(std::ostream& ostr, const Document* doc)
   {
-    ostr << '{';
+    // Brace/Bracket Open
+    char bo = '{';
+    // Brace/Bracket End
+    char be = '}';
+
+    is_array = doc->is_array_get();
+    if (is_array)
+    {
+      bo = '[';
+      be = ']';
+    }
+
+    ostr << bo << incendl;
 
     size_t size = doc->elist_get().size();
     for (size_t i = 0; i < size; i++)
@@ -84,21 +96,23 @@ namespace Ast
       ostr << doc->elist_get()[i];
 
       if (i < size - 1)
-        std::cout << ", ";
+        ostr << ',' << iendl;
     }
 
-    ostr << '}';
-
-    return ostr;
+    return ostr << decendl << be;
   }
 
   template <typename T>
   std::ostream& operator<<(std::ostream& ostr, const Element<T>* elt)
   {
+    // If the element is an array, we don't need to display its name.
+    if (is_array)
+      return ostr << elt->attr_get();
+
     return ostr << '"' << elt->name_get() << '"' << ": " << elt->attr_get();
   }
 
-  std::ostream& operator<<(std::ostream& ostr, Binary* bin)
+  std::ostream& operator<<(std::ostream& ostr, const Binary* bin)
   {
     return ostr << '"' << bin->bytes_get() << '"';
   }
@@ -107,13 +121,29 @@ namespace Ast
   {
     return ostr << status->bool_str();
   }
-  /*std::ostream& operator<<(std::ostream& ostr, CodeWS* str)
-  std::ostream& operator<<(std::ostream& ostr, DBPointer* str)*/
+
+  std::ostream& operator<<(std::ostream& ostr, const CodeWS* codews)
+  {
+    codews = codews;
+    return ostr;
+  }
+
+  std::ostream& operator<<(std::ostream& ostr, const DBPointer* dbptr)
+  {
+    dbptr = dbptr;
+    return ostr;
+  }
+
   std::ostream& operator<<(std::ostream& ostr, const ObjectId* obj)
   {
     return ostr << "ObjectId(\"" << obj->bytes_get() << "\")";
   }
-  /*std::ostream& operator<<(std::ostream& ostr, Regex* str)*/
+
+  std::ostream& operator<<(std::ostream& ostr, const Regex* regex)
+  {
+    regex = regex;
+    return ostr;
+  }
 
   std::ostream& operator<<(std::ostream& ostr, const String* str)
   {
