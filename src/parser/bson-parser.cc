@@ -197,7 +197,7 @@ namespace Parser
     auto size = read_size<Ast::Int32>();
 
     // read size - 1 bytes to eat the '\x00' here for error handling.
-    Ast::Bytes bytes = read_sized_bytes(size - 1);
+    Ast::Bytes bytes = read_fixed_bytes(size - 1);
 
     if (buffer_[i_] != '\x00')
       throw std::runtime_error("string: Invalid file format.");
@@ -247,7 +247,7 @@ namespace Parser
 
     Ast::Binary::Subtype subtype = subtype_it->second;
 
-    Ast::Bytes bytes = read_sized_bytes(size);
+    Ast::Bytes bytes = read_fixed_bytes(size);
 
     return std::make_shared<Ast::Binary>(size, subtype, bytes);
   }
@@ -265,7 +265,7 @@ namespace Parser
   Node<Ast::ObjectId>
   BsonParser::read_objectid()
   {
-    auto bytes = read_sized_bytes(12);
+    auto bytes = read_fixed_bytes(12);
     return std::make_shared<Ast::ObjectId>(bytes);
   }
 
@@ -293,7 +293,7 @@ namespace Parser
   BsonParser::read_dbpointer()
   {
     auto str = read_string();
-    auto bytes = read_sized_bytes(12);
+    auto bytes = read_fixed_bytes(12);
     return std::make_shared<Ast::DBPointer>(str, bytes);
   }
 
@@ -347,7 +347,7 @@ namespace Parser
   }
 
   Ast::Bytes
-  BsonParser::read_sized_bytes(Ast::Int32 size)
+  BsonParser::read_fixed_bytes(Ast::Int32 size)
   {
     Ast::Bytes bytes;
     bytes.reserve(size);

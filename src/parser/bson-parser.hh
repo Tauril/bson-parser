@@ -49,7 +49,7 @@ namespace Parser
     template <typename Int>
     Int read_size();
     Ast::Double read_size();
-    Ast::Bytes read_sized_bytes(Ast::Int32 size);
+    Ast::Bytes read_fixed_bytes(Ast::Int32 size);
 
     std::vector<Ast::Byte> buffer_; // Content of the input file.
 
