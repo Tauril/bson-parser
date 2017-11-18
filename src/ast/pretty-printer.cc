@@ -1,16 +1,5 @@
 #include <iomanip>
 
-#include "ast/binder.hh"
-#include "ast/binary.hh"
-#include "ast/boolean.hh"
-#include "ast/code-ws.hh"
-#include "ast/db-pointer.hh"
-#include "ast/document.hh"
-#include "ast/element.hh"
-#include "ast/string.hh"
-#include "ast/object-id.hh"
-#include "ast/regex.hh"
-
 #include "ast/pretty-printer.hh"
 
 namespace Ast
@@ -81,6 +70,7 @@ namespace Ast
     // Brace/Bracket End
     char be = '}';
 
+    auto save = is_array;
     is_array = doc->is_array_get();
     if (is_array)
     {
@@ -98,6 +88,8 @@ namespace Ast
       if (i < size - 1)
         ostr << ',' << iendl;
     }
+
+    is_array = save;
 
     return ostr << decendl << be;
   }
@@ -132,6 +124,11 @@ namespace Ast
   {
     dbptr = dbptr;
     return ostr;
+  }
+
+  std::ostream& operator<<(std::ostream& ostr, const Date* date)
+  {
+    return ostr << "Date(" << date->date_get() << ')';
   }
 
   std::ostream& operator<<(std::ostream& ostr, const ObjectId* obj)

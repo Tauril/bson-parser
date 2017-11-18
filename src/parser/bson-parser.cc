@@ -157,6 +157,13 @@ namespace Parser
             elist.emplace_back(std::make_shared<attr_type>(type, ename, attr));
             break;
           }
+        case 14:
+          {
+            using attr_type = Ast::Element<Ast::Types<14>::type>;
+            auto attr = read_date();
+            elist.emplace_back(std::make_shared<attr_type>(type, ename, attr));
+            break;
+          }
           // This can't happen because the value is checked before.
         default:
           throw std::runtime_error("elist: Invalid file format.");
@@ -265,6 +272,14 @@ namespace Parser
     return std::make_shared<Ast::CodeWS>(size, str, doc);
   }
 
+  Node<Ast::Date>
+  BsonParser::read_date()
+  {
+    auto date = read_size<Ast::Double>();
+
+    return std::make_shared<Ast::Date>(date);
+  }
+
   Node<Ast::ObjectId>
   BsonParser::read_objectid()
   {
@@ -323,7 +338,7 @@ namespace Parser
     // format in the calling method.
     // However, putting it here gives so much refactoring that
     // it makes it worth it.
-    if (i_ >= buffer_.size() || size < 0)
+    if (i_ >= buffer_.size())
       throw std::runtime_error("size: Invalid file format.");
 
     return size;

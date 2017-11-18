@@ -18,6 +18,7 @@ src_tauril_bson_parser_SOURCES = \
 	src/ast/binary.hh src/ast/binary.cc src/ast/binary.hxx \
 	src/ast/boolean.hh src/ast/boolean.cc src/ast/boolean.hxx \
 	src/ast/code-ws.hh src/ast/code-ws.cc src/ast/code-ws.hxx \
+	src/ast/date.hh src/ast/date.cc src/ast/date.hxx \
 	src/ast/db-pointer.hh src/ast/db-pointer.cc src/ast/db-pointer.hxx \
 	src/ast/object-id.hh src/ast/object-id.cc src/ast/object-id.hxx \
 	src/ast/regex.hh src/ast/regex.cc src/ast/regex.hxx \

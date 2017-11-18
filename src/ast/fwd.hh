@@ -21,6 +21,7 @@ namespace Ast
   class Regex;
   class DBPointer;
   class CodeWS;
+  class Date;
 
   template <typename T>
   using Node = std::shared_ptr<T>;
@@ -52,7 +53,8 @@ namespace Ast
       Node<Element<Node<Boolean>>>,
       Node<Element<Node<Regex>>>,
       Node<Element<Node<DBPointer>>>,
-      Node<Element<Node<CodeWS>>>
+      Node<Element<Node<CodeWS>>>,
+      Node<Element<Node<Date>>>
     >;
 
   using EList = std::vector<ElementVariant>;

@@ -73,7 +73,6 @@ namespace Ast
       {Type::_double,        1}, // Double
       {Type::_int32,         2}, // Int32
       {Type::_int64,         3}, // Int64
-      {Type::_datetime,      3}, // Int64
       {Type::_uint64,        4}, // Uint64
       {Type::_decimal128,    5}, // Decimal128
       {Type::_string,        6}, // Node<String>
@@ -86,7 +85,8 @@ namespace Ast
       {Type::_boolean,      10}, // Node<Boolean>
       {Type::_regex,        11}, // Node<Regex>
       {Type::_db_pointer,   12}, // Node<DBPointer>
-      {Type::_js_code_ws,   13}  // Node<CodeWS>
+      {Type::_js_code_ws,   13}, // Node<CodeWS>
+      {Type::_datetime,     14}, // Node<Date>
     };
 
   } // namespace ElementAttribute

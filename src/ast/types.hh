@@ -92,4 +92,10 @@ namespace Ast
     typedef Node<CodeWS> type;
   };
 
+  template <>
+  struct Types<14>
+  {
+    typedef Node<Date> type;
+  };
+
 } // namespace Ast

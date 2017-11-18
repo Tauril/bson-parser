@@ -6,6 +6,7 @@
 #include "ast/binder.hh"
 #include "ast/boolean.hh"
 #include "ast/code-ws.hh"
+#include "ast/date.hh"
 #include "ast/db-pointer.hh"
 #include "ast/document.hh"
 #include "ast/element.hh"
@@ -40,6 +41,7 @@ namespace Parser
     Ast::CString read_cstring(); // cstring
     Node<Ast::Binary> read_binary(); // binary
     Node<Ast::CodeWS> read_codews(); // code_w_s
+    Node<Ast::Date> read_date(); // date
     Node<Ast::ObjectId> read_objectid(); // object_id
     Node<Ast::Boolean> read_boolean(); // boolean
     Node<Ast::Regex> read_regex(); // regex
