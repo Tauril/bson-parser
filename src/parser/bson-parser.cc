@@ -203,7 +203,7 @@ namespace Parser
       throw std::runtime_error("string: Invalid file format.");
 
     // Eat the '\x00'
-    bytes += buffer_[i_++];
+    buffer_[i_++];
 
     return std::make_shared<Ast::String>(size, bytes);
   }
@@ -220,7 +220,7 @@ namespace Parser
       throw std::runtime_error("cstring: Invalid file format.");
 
     // Eat the '\x00'
-    cstring += buffer_[i_++];
+    buffer_[i_++];
 
     return cstring;
   }
