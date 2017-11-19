@@ -10,7 +10,7 @@ namespace
 
   void help()
   {
-    std::cout << "Usage: ./src/tauril-bson-parser file.bson\n";
+    std::cerr << "Usage: ./src/tauril-bson-parser file.bson\n";
   }
 
 }
