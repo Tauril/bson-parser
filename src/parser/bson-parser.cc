@@ -50,116 +50,131 @@ namespace Parser
     // Attribute abstract class all the attributes would
     // derive from and simply call read_element();
     auto add_element =
-      [this, &elist](Ast::ElementAttribute::Type type, Ast::EName ename)
+      [this, &elist](Ast::ElementAttribute::InputType type, Ast::EName ename)
       {
         // Indice of the soon-to-be-parsed attribute type.
         auto id = Ast::ElementAttribute::type_val.at(type);
 
         switch (id)
         {
-        case 0:
+        case static_cast<int>(Ast::ElementType::_nullptr):
           {
-            using attr_type = Ast::Element<Ast::Types<0>::type>;
+            using attr_type =
+              Ast::Element<Ast::Types<Ast::ElementType::_nullptr>::type>;
             elist.emplace_back(std::make_shared<attr_type>(type, ename,
                                                            nullptr));
             break;
           }
-        case 1:
+        case static_cast<int>(Ast::ElementType::_double):
           {
-            using attr_type = Ast::Element<Ast::Types<1>::type>;
-            auto attr = read_size<Ast::Types<1>::type>();
+            using _double = Ast::Types<Ast::ElementType::_double>::type;
+            using attr_type = Ast::Element<_double>;
+            auto attr = read_size<_double>();
             elist.emplace_back(std::make_shared<attr_type>(type, ename, attr));
             break;
           }
-        case 2:
+        case static_cast<int>(Ast::ElementType::_int32):
           {
-            using attr_type = Ast::Element<Ast::Types<2>::type>;
-            auto attr = read_size<Ast::Types<2>::type>();
+            using _int32 = Ast::Types<Ast::ElementType::_int32>::type;
+            using attr_type = Ast::Element<_int32>;
+            auto attr = read_size<_int32>();
             elist.emplace_back(std::make_shared<attr_type>(type, ename, attr));
             break;
           }
-        case 3:
+        case static_cast<int>(Ast::ElementType::_int64):
           {
-            using attr_type = Ast::Element<Ast::Types<3>::type>;
-            auto attr = read_size<Ast::Types<3>::type>();
+            using _int64 = Ast::Types<Ast::ElementType::_int64>::type;
+            using attr_type = Ast::Element<_int64>;
+            auto attr = read_size<_int64>();
             elist.emplace_back(std::make_shared<attr_type>(type, ename, attr));
             break;
           }
-        case 4:
+        case static_cast<int>(Ast::ElementType::_uint64):
           {
-            using attr_type = Ast::Element<Ast::Types<4>::type>;
-            auto attr = read_size<Ast::Types<4>::type>();
+            using _uint64 = Ast::Types<Ast::ElementType::_uint64>::type;
+            using attr_type = Ast::Element<_uint64>;
+            auto attr = read_size<_uint64>();
             elist.emplace_back(std::make_shared<attr_type>(type, ename, attr));
             break;
           }
-        case 5:
+        case static_cast<int>(Ast::ElementType::_decimal128):
           {
-            using attr_type = Ast::Element<Ast::Types<5>::type>;
-            auto attr = read_size<Ast::Types<5>::type>();
+            using _decimal128 = Ast::Types<Ast::ElementType::_decimal128>::type;
+            using attr_type = Ast::Element<_decimal128>;
+            auto attr = read_size<_decimal128>();
             elist.emplace_back(std::make_shared<attr_type>(type, ename, attr));
             break;
           }
-        case 6:
+        case static_cast<int>(Ast::ElementType::_string):
           {
-            using attr_type = Ast::Element<Ast::Types<6>::type>;
+            using _string = Ast::Types<Ast::ElementType::_string>::type;
+            using attr_type = Ast::Element<_string>;
             auto attr = read_string();
             elist.emplace_back(std::make_shared<attr_type>(type, ename, attr));
             break;
           }
-        case 7:
+        case static_cast<int>(Ast::ElementType::_document):
           {
-            using attr_type = Ast::Element<Ast::Types<7>::type>;
+            using _document = Ast::Types<Ast::ElementType::_document>::type;
+            using attr_type = Ast::Element<_document>;
             auto attr = read_document();
-            if (type == Ast::ElementAttribute::Type::_array)
+            if (type == Ast::ElementAttribute::InputType::_array)
               attr->is_array_set(true);
             elist.emplace_back(std::make_shared<attr_type>(type, ename, attr));
             break;
           }
-        case 8:
+        case static_cast<int>(Ast::ElementType::_binary):
           {
-            using attr_type = Ast::Element<Ast::Types<8>::type>;
+            using _binary = Ast::Types<Ast::ElementType::_binary>::type;
+            using attr_type = Ast::Element<_binary>;
             auto attr = read_binary();
             elist.emplace_back(std::make_shared<attr_type>(type, ename, attr));
             break;
           }
-        case 9:
+        case static_cast<int>(Ast::ElementType::_objectid):
           {
-            using attr_type = Ast::Element<Ast::Types<9>::type>;
+            using _objectid = Ast::Types<Ast::ElementType::_objectid>::type;
+            using attr_type = Ast::Element<_objectid>;
             auto attr = read_objectid();
             elist.emplace_back(std::make_shared<attr_type>(type, ename, attr));
             break;
           }
-        case 10:
+        case static_cast<int>(Ast::ElementType::_boolean):
           {
-            using attr_type = Ast::Element<Ast::Types<10>::type>;
+            using _boolean = Ast::Types<Ast::ElementType::_boolean>::type;
+            using attr_type = Ast::Element<_boolean>;
             auto attr = read_boolean();
             elist.emplace_back(std::make_shared<attr_type>(type, ename, attr));
             break;
           }
-        case 11:
+        case static_cast<int>(Ast::ElementType::_regex):
           {
-            using attr_type = Ast::Element<Ast::Types<11>::type>;
+            using _regex = Ast::Types<Ast::ElementType::_regex>::type;
+            using attr_type = Ast::Element<_regex>;
             auto attr = read_regex();
             elist.emplace_back(std::make_shared<attr_type>(type, ename, attr));
             break;
           }
-        case 12:
+        case static_cast<int>(Ast::ElementType::_dbpointer):
           {
-            using attr_type = Ast::Element<Ast::Types<12>::type>;
+            using _dbpointer = Ast::Types<Ast::ElementType::_dbpointer>::type;
+            using attr_type = Ast::Element<_dbpointer>;
             auto attr = read_dbpointer();
             elist.emplace_back(std::make_shared<attr_type>(type, ename, attr));
             break;
           }
-        case 13:
+        case static_cast<int>(Ast::ElementType::_codews):
           {
-            using attr_type = Ast::Element<Ast::Types<13>::type>;
+            using _codews = Ast::Types<Ast::ElementType::_codews>::type;
+            using attr_type = Ast::Element<_codews>;
             auto attr = read_codews();
             elist.emplace_back(std::make_shared<attr_type>(type, ename, attr));
             break;
           }
-        case 14:
+        case static_cast<int>(Ast::ElementType::_date):
           {
-            using attr_type = Ast::Element<Ast::Types<14>::type>;
+            using _date = Ast::Types<Ast::ElementType::_date>::type;
+            using attr_type = Ast::Element<_date>;
             auto attr = read_date();
             elist.emplace_back(std::make_shared<attr_type>(type, ename, attr));
             break;

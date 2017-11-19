@@ -6,14 +6,15 @@ namespace Ast
 {
 
   template <typename T>
-  Element<T>::Element(ElementAttribute::Type type, const EName& name, T attr)
+  Element<T>::Element(ElementAttribute::InputType type, const EName& name,
+                      T attr)
     : type_(type)
     , name_(name)
     , attr_(attr)
   {}
 
   template <typename T>
-  inline ElementAttribute::Type
+  inline ElementAttribute::InputType
   Element<T>::type_get() const
   {
     return type_;

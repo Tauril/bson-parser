@@ -12,7 +12,7 @@ namespace Ast
   {
 
     // Type of an attribute
-    enum class Type
+    enum class InputType
     {
       /* \x01 */ _double,
       /* \x02 */ _string,
@@ -37,56 +37,56 @@ namespace Ast
       /* \x7F */ _max_key
     };
 
-    static const std::unordered_map<char, Type>
+    static const std::unordered_map<char, InputType>
       type_attr =
     {
-      {'\x01', Type::_double},
-      {'\x02', Type::_string},
-      {'\x03', Type::_embedded_doc},
-      {'\x04', Type::_array},
-      {'\x05', Type::_binary_data},
-      {'\x06', Type::_undefined},
-      {'\x07', Type::_objectid},
-      {'\x08', Type::_boolean},
-      {'\x09', Type::_datetime},
-      {'\x0A', Type::_null},
-      {'\x0B', Type::_regex},
-      {'\x0C', Type::_db_pointer},
-      {'\x0D', Type::_js_code},
-      {'\x0E', Type::_symbol},
-      {'\x0F', Type::_js_code_ws},
-      {'\x10', Type::_int32},
-      {'\x11', Type::_uint64},
-      {'\x12', Type::_int64},
-      {'\x13', Type::_decimal128},
-      {'\xFF', Type::_min_key},
-      {'\x7F', Type::_max_key}
+      {'\x01', InputType::_double},
+      {'\x02', InputType::_string},
+      {'\x03', InputType::_embedded_doc},
+      {'\x04', InputType::_array},
+      {'\x05', InputType::_binary_data},
+      {'\x06', InputType::_undefined},
+      {'\x07', InputType::_objectid},
+      {'\x08', InputType::_boolean},
+      {'\x09', InputType::_datetime},
+      {'\x0A', InputType::_null},
+      {'\x0B', InputType::_regex},
+      {'\x0C', InputType::_db_pointer},
+      {'\x0D', InputType::_js_code},
+      {'\x0E', InputType::_symbol},
+      {'\x0F', InputType::_js_code_ws},
+      {'\x10', InputType::_int32},
+      {'\x11', InputType::_uint64},
+      {'\x12', InputType::_int64},
+      {'\x13', InputType::_decimal128},
+      {'\xFF', InputType::_min_key},
+      {'\x7F', InputType::_max_key}
     };
 
-    static const std::map<Type, unsigned>
+    static const std::map<InputType, unsigned>
       type_val =
     {
-      {Type::_undefined,     0}, // std::nullptr_t
-      {Type::_null,          0}, // std::nullptr_t
-      {Type::_min_key,       0}, // std::nullptr_t
-      {Type::_max_key,       0}, // std::nullptr_t
-      {Type::_double,        1}, // Double
-      {Type::_int32,         2}, // Int32
-      {Type::_int64,         3}, // Int64
-      {Type::_uint64,        4}, // Uint64
-      {Type::_decimal128,    5}, // Decimal128
-      {Type::_string,        6}, // Node<String>
-      {Type::_js_code,       6}, // Node<String>
-      {Type::_symbol,        6}, // Node<String>
-      {Type::_embedded_doc,  7}, // Node<Document>
-      {Type::_array,         7}, // Node<Document>
-      {Type::_binary_data,   8}, // Node<Binary>
-      {Type::_objectid,      9}, // Node<ObjectId>
-      {Type::_boolean,      10}, // Node<Boolean>
-      {Type::_regex,        11}, // Node<Regex>
-      {Type::_db_pointer,   12}, // Node<DBPointer>
-      {Type::_js_code_ws,   13}, // Node<CodeWS>
-      {Type::_datetime,     14}, // Node<Date>
+      {InputType::_undefined,     0}, // std::nullptr_t
+      {InputType::_null,          0}, // std::nullptr_t
+      {InputType::_min_key,       0}, // std::nullptr_t
+      {InputType::_max_key,       0}, // std::nullptr_t
+      {InputType::_double,        1}, // Double
+      {InputType::_int32,         2}, // Int32
+      {InputType::_int64,         3}, // Int64
+      {InputType::_uint64,        4}, // Uint64
+      {InputType::_decimal128,    5}, // Decimal128
+      {InputType::_string,        6}, // Node<String>
+      {InputType::_js_code,       6}, // Node<String>
+      {InputType::_symbol,        6}, // Node<String>
+      {InputType::_embedded_doc,  7}, // Node<Document>
+      {InputType::_array,         7}, // Node<Document>
+      {InputType::_binary_data,   8}, // Node<Binary>
+      {InputType::_objectid,      9}, // Node<ObjectId>
+      {InputType::_boolean,      10}, // Node<Boolean>
+      {InputType::_regex,        11}, // Node<Regex>
+      {InputType::_db_pointer,   12}, // Node<DBPointer>
+      {InputType::_js_code_ws,   13}, // Node<CodeWS>
+      {InputType::_datetime,     14}, // Node<Date>
     };
 
   } // namespace ElementAttribute
@@ -95,14 +95,14 @@ namespace Ast
   class Element
   {
   public:
-    Element(ElementAttribute::Type type, const EName& name, T attr);
+    Element(ElementAttribute::InputType type, const EName& name, T attr);
 
-    ElementAttribute::Type type_get() const;
+    ElementAttribute::InputType type_get() const;
     EName name_get() const;
     T attr_get() const;
   private:
     // Type of element
-    ElementAttribute::Type type_;
+    ElementAttribute::InputType type_;
     // Key name
     EName name_;
     // Attributes of the element.
