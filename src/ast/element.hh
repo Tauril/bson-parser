@@ -4,6 +4,7 @@
 #include <unordered_map>
 
 #include "ast/fwd.hh"
+#include "ast/types.hh"
 
 namespace Ast
 {
@@ -63,30 +64,30 @@ namespace Ast
       {'\x7F', InputType::_max_key}
     };
 
-    static const std::map<InputType, unsigned>
+    static const std::map<InputType, ElementType>
       type_val =
     {
-      {InputType::_undefined,     0}, // std::nullptr_t
-      {InputType::_null,          0}, // std::nullptr_t
-      {InputType::_min_key,       0}, // std::nullptr_t
-      {InputType::_max_key,       0}, // std::nullptr_t
-      {InputType::_double,        1}, // Double
-      {InputType::_int32,         2}, // Int32
-      {InputType::_int64,         3}, // Int64
-      {InputType::_uint64,        4}, // Uint64
-      {InputType::_decimal128,    5}, // Decimal128
-      {InputType::_string,        6}, // Node<String>
-      {InputType::_js_code,       6}, // Node<String>
-      {InputType::_symbol,        6}, // Node<String>
-      {InputType::_embedded_doc,  7}, // Node<Document>
-      {InputType::_array,         7}, // Node<Document>
-      {InputType::_binary_data,   8}, // Node<Binary>
-      {InputType::_objectid,      9}, // Node<ObjectId>
-      {InputType::_boolean,      10}, // Node<Boolean>
-      {InputType::_regex,        11}, // Node<Regex>
-      {InputType::_db_pointer,   12}, // Node<DBPointer>
-      {InputType::_js_code_ws,   13}, // Node<CodeWS>
-      {InputType::_datetime,     14}, // Node<Date>
+      {InputType::_undefined,     ElementType::_nullptr}, // std::nullptr_t
+      {InputType::_null,          ElementType::_nullptr}, // std::nullptr_t
+      {InputType::_min_key,       ElementType::_nullptr}, // std::nullptr_t
+      {InputType::_max_key,       ElementType::_nullptr}, // std::nullptr_t
+      {InputType::_double,        ElementType::_double}, // Double
+      {InputType::_int32,         ElementType::_int32}, // Int32
+      {InputType::_int64,         ElementType::_int64}, // Int64
+      {InputType::_uint64,        ElementType::_uint64}, // Uint64
+      {InputType::_decimal128,    ElementType::_decimal128}, // Decimal128
+      {InputType::_string,        ElementType::_string}, // Node<String>
+      {InputType::_js_code,       ElementType::_string}, // Node<String>
+      {InputType::_symbol,        ElementType::_string}, // Node<String>
+      {InputType::_embedded_doc,  ElementType::_document}, // Node<Document>
+      {InputType::_array,         ElementType::_document}, // Node<Document>
+      {InputType::_binary_data,   ElementType::_binary}, // Node<Binary>
+      {InputType::_objectid,      ElementType::_objectid}, // Node<ObjectId>
+      {InputType::_boolean,       ElementType::_boolean}, // Node<Boolean>
+      {InputType::_regex,         ElementType::_regex}, // Node<Regex>
+      {InputType::_db_pointer,    ElementType::_dbpointer}, // Node<DBPointer>
+      {InputType::_js_code_ws,    ElementType::_codews}, // Node<CodeWS>
+      {InputType::_datetime,      ElementType::_date}, // Node<Date>
     };
 
   } // namespace ElementAttribute

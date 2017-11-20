@@ -49,6 +49,7 @@ namespace Parser
     // The alternative would be to instantiate some kind of
     // Attribute abstract class all the attributes would
     // derive from and simply call read_element();
+    // TODO: Find a way to factorize this code.
     auto add_element =
       [this, &elist](Ast::ElementAttribute::InputType type, Ast::EName ename)
       {
@@ -57,7 +58,7 @@ namespace Parser
 
         switch (id)
         {
-        case static_cast<int>(Ast::ElementType::_nullptr):
+        case Ast::ElementType::_nullptr:
           {
             using attr_type =
               Ast::Element<Ast::Types<Ast::ElementType::_nullptr>::type>;
@@ -65,7 +66,7 @@ namespace Parser
                                                            nullptr));
             break;
           }
-        case static_cast<int>(Ast::ElementType::_double):
+        case Ast::ElementType::_double:
           {
             using _double = Ast::Types<Ast::ElementType::_double>::type;
             using attr_type = Ast::Element<_double>;
@@ -73,7 +74,7 @@ namespace Parser
             elist.emplace_back(std::make_shared<attr_type>(type, ename, attr));
             break;
           }
-        case static_cast<int>(Ast::ElementType::_int32):
+        case Ast::ElementType::_int32:
           {
             using _int32 = Ast::Types<Ast::ElementType::_int32>::type;
             using attr_type = Ast::Element<_int32>;
@@ -81,7 +82,7 @@ namespace Parser
             elist.emplace_back(std::make_shared<attr_type>(type, ename, attr));
             break;
           }
-        case static_cast<int>(Ast::ElementType::_int64):
+        case Ast::ElementType::_int64:
           {
             using _int64 = Ast::Types<Ast::ElementType::_int64>::type;
             using attr_type = Ast::Element<_int64>;
@@ -89,7 +90,7 @@ namespace Parser
             elist.emplace_back(std::make_shared<attr_type>(type, ename, attr));
             break;
           }
-        case static_cast<int>(Ast::ElementType::_uint64):
+        case Ast::ElementType::_uint64:
           {
             using _uint64 = Ast::Types<Ast::ElementType::_uint64>::type;
             using attr_type = Ast::Element<_uint64>;
@@ -97,7 +98,7 @@ namespace Parser
             elist.emplace_back(std::make_shared<attr_type>(type, ename, attr));
             break;
           }
-        case static_cast<int>(Ast::ElementType::_decimal128):
+        case Ast::ElementType::_decimal128:
           {
             using _decimal128 = Ast::Types<Ast::ElementType::_decimal128>::type;
             using attr_type = Ast::Element<_decimal128>;
@@ -105,7 +106,7 @@ namespace Parser
             elist.emplace_back(std::make_shared<attr_type>(type, ename, attr));
             break;
           }
-        case static_cast<int>(Ast::ElementType::_string):
+        case Ast::ElementType::_string:
           {
             using _string = Ast::Types<Ast::ElementType::_string>::type;
             using attr_type = Ast::Element<_string>;
@@ -113,7 +114,7 @@ namespace Parser
             elist.emplace_back(std::make_shared<attr_type>(type, ename, attr));
             break;
           }
-        case static_cast<int>(Ast::ElementType::_document):
+        case Ast::ElementType::_document:
           {
             using _document = Ast::Types<Ast::ElementType::_document>::type;
             using attr_type = Ast::Element<_document>;
@@ -123,7 +124,7 @@ namespace Parser
             elist.emplace_back(std::make_shared<attr_type>(type, ename, attr));
             break;
           }
-        case static_cast<int>(Ast::ElementType::_binary):
+        case Ast::ElementType::_binary:
           {
             using _binary = Ast::Types<Ast::ElementType::_binary>::type;
             using attr_type = Ast::Element<_binary>;
@@ -131,7 +132,7 @@ namespace Parser
             elist.emplace_back(std::make_shared<attr_type>(type, ename, attr));
             break;
           }
-        case static_cast<int>(Ast::ElementType::_objectid):
+        case Ast::ElementType::_objectid:
           {
             using _objectid = Ast::Types<Ast::ElementType::_objectid>::type;
             using attr_type = Ast::Element<_objectid>;
@@ -139,7 +140,7 @@ namespace Parser
             elist.emplace_back(std::make_shared<attr_type>(type, ename, attr));
             break;
           }
-        case static_cast<int>(Ast::ElementType::_boolean):
+        case Ast::ElementType::_boolean:
           {
             using _boolean = Ast::Types<Ast::ElementType::_boolean>::type;
             using attr_type = Ast::Element<_boolean>;
@@ -147,7 +148,7 @@ namespace Parser
             elist.emplace_back(std::make_shared<attr_type>(type, ename, attr));
             break;
           }
-        case static_cast<int>(Ast::ElementType::_regex):
+        case Ast::ElementType::_regex:
           {
             using _regex = Ast::Types<Ast::ElementType::_regex>::type;
             using attr_type = Ast::Element<_regex>;
@@ -155,7 +156,7 @@ namespace Parser
             elist.emplace_back(std::make_shared<attr_type>(type, ename, attr));
             break;
           }
-        case static_cast<int>(Ast::ElementType::_dbpointer):
+        case Ast::ElementType::_dbpointer:
           {
             using _dbpointer = Ast::Types<Ast::ElementType::_dbpointer>::type;
             using attr_type = Ast::Element<_dbpointer>;
@@ -163,7 +164,7 @@ namespace Parser
             elist.emplace_back(std::make_shared<attr_type>(type, ename, attr));
             break;
           }
-        case static_cast<int>(Ast::ElementType::_codews):
+        case Ast::ElementType::_codews:
           {
             using _codews = Ast::Types<Ast::ElementType::_codews>::type;
             using attr_type = Ast::Element<_codews>;
@@ -171,7 +172,7 @@ namespace Parser
             elist.emplace_back(std::make_shared<attr_type>(type, ename, attr));
             break;
           }
-        case static_cast<int>(Ast::ElementType::_date):
+        case Ast::ElementType::_date:
           {
             using _date = Ast::Types<Ast::ElementType::_date>::type;
             using attr_type = Ast::Element<_date>;
