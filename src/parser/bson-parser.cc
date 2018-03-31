@@ -8,7 +8,6 @@ namespace Parser
 
   BsonParser::BsonParser(const std::vector<Ast::Byte>& buffer)
     : buffer_(buffer)
-    , i_(0)
   {}
 
   Node<Ast::Binder>

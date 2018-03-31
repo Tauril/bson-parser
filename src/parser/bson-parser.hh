@@ -57,7 +57,7 @@ namespace Parser
 
     // ith char in the buffer.
     // Manipulated through each read_* method.
-    size_t i_;
+    size_t i_ = 0;
   };
 
 } // namespace Parser
